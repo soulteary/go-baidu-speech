@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"os"
 	"os/signal"
 	"strconv"
 	"syscall"
@@ -11,6 +12,7 @@ import (
 
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
+	static "github.com/soulteary/gin-static"
 )
 
 func Launch(debugMode bool) {
@@ -23,10 +25,13 @@ func Launch(debugMode bool) {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
+	os.MkdirAll("./public", os.ModePerm)
+
 	route := gin.New()
 	route.Use(gin.Recovery())
 	route.Use(gzip.Gzip(gzip.DefaultCompression))
 
+	route.Use(static.Serve("/", static.LocalFile("./public", true)))
 	route.GET("/ping", Ping)
 	route.POST("/tts", TTS)
 	route.POST("/asr", ASR)

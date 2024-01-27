@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"strconv"
+	"time"
 
 	"github.com/shanghuiyang/oauth"
 	"github.com/shanghuiyang/speech"
@@ -22,8 +24,8 @@ func BaiduTTS(auth *oauth.BaiduOauth, text string) (bool, string) {
 		return false, ""
 	}
 
-	file := fmt.Sprintf("%s.wav", "test")
-	if err := os.WriteFile(file, data, 0644); err != nil {
+	file := fmt.Sprintf("%s.wav", GetUnixStr())
+	if err := os.WriteFile(path.Join("./public", file), data, 0644); err != nil {
 		log.Printf("failed to save %s, error: %v", file, err)
 		return false, ""
 	}
@@ -31,6 +33,7 @@ func BaiduTTS(auth *oauth.BaiduOauth, text string) (bool, string) {
 }
 
 func BaiduASR(auth *oauth.BaiduOauth, file string) (bool, string) {
+	file = path.Join("./public", file)
 	data, err := os.ReadFile(file)
 	if err != nil {
 		log.Printf("failed to read %s, error: %v\n", file, err)
@@ -68,4 +71,8 @@ func GetPort() int {
 
 	log.Printf("Using the port: %d\n", port)
 	return port
+}
+
+func GetUnixStr() string {
+	return fmt.Sprintf("%v", time.Now().Unix())
 }
