@@ -2,6 +2,9 @@
 
 API Service of Baidu ASR/TTS.
 
+## TTS
+
+![](.github/screenshots/tts.jpg)
 
 ## Credit
 
