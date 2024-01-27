@@ -10,20 +10,12 @@ import (
 	"github.com/shanghuiyang/speech"
 )
 
-const (
-	baiduSpeechAPIKey    = "your_baidu_api_key"
-	baiduSpeechSecretKey = "your_baidu_speech_secret_key"
-)
-
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("error: invalid args")
-		fmt.Println(`usage: tts "a test"`)
-		os.Exit(1)
-	}
-	text := os.Args[1]
+	text := "阳光彩虹小白马"
+	AK := os.Getenv("BAIDU_SPEECH_API_KEY")
+	SK := os.Getenv("BAIDU_SPEECH_SECRET_KEY")
 
-	auth := oauth.NewBaiduOauth(baiduSpeechAPIKey, baiduSpeechSecretKey, oauth.NewCacheImp())
+	auth := oauth.NewBaiduOauth(AK, SK, oauth.NewCacheImp())
 	tts := speech.NewBaiduTTS(auth)
 	data, err := tts.ToSpeech(text)
 	if err != nil {
