@@ -1,13 +1,14 @@
-package oauth
+package oauth_test
 
 import (
 	"testing"
 
+	"github.com/shanghuiyang/oauth"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestCacheImp(t *testing.T) {
-	c := NewCacheImp()
+	c := oauth.NewCacheImp()
 	assert.NotNil(t, c)
 
 	token := "a token"
