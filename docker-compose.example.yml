@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  web:
+    image: soulteary/go-baidu-speech
+    environment:
+      - BAIDU_TTS_API_KEY=UPDATE_WITH_YOUR_API_KEY
+      - BAIDU_TTS_SECRET_KEY=UPDATE_WITH_YOUR_SECRET_KEY
+      - BAIDU_ASR_API_KEY=UPDATE_WITH_YOUR_API_KEY
+      - BAIDU_ASR_SECRET_KEY=UPDATE_WITH_YOUR_SECRET_KEY
+    ports:
+      - "8080:8080"

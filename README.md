@@ -18,6 +18,20 @@ curl -X POST -F "file=@/Users/soulteary/Downloads/1706341924.wav" http://localho
 阳光彩虹小白马
 ```
 
+## Docker
+
+build it:
+
+```bash
+docker build -t soulteary/go-baidu-speech . -f docker/Dockerfile
+```
+
+play:
+
+```bash
+docker compose up -d
+```
+
 ## Credit
 
 - pkg: https://github.com/shanghuiyang/oauth / https://github.com/shanghuiyang/speech
