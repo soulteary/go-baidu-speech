@@ -33,7 +33,6 @@ func BaiduTTS(auth *oauth.BaiduOauth, text string) (bool, string) {
 }
 
 func BaiduASR(auth *oauth.BaiduOauth, file string) (bool, string) {
-	file = path.Join("./public", file)
 	data, err := os.ReadFile(file)
 	if err != nil {
 		log.Printf("failed to read %s, error: %v\n", file, err)
