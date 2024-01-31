@@ -1,6 +1,8 @@
 # Go Baidu Speech
 
-API Service of Baidu ASR/TTS.
+API Service of Baidu **ASR** and **TTS**, support Docker.
+
+![](.github/preview.jpg)
 
 ## TTS
 
